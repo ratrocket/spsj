@@ -14,6 +14,15 @@ http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
 <script type="text/javascript">
   window.onload=redirectOnIndexPage();
   function redirectOnIndexPage() {
+     if (location.href == 'http://silverjubilee.subpop.com/' || location.href == 'http://silverjubilee.subpop.com') {
+      window.location = "http://silverjubilee.subpop.com/info"
+     }
+     if (location.href == 'http://gksilverjubileestaging.tumblr.com/' || location.href == 'http://gksilverjubileestaging.tumblr.com') {
+      window.location = "http://gksilverjubileestaging.tumblr.com/info"
+     }
+     if (location.href == 'http://sfsilverjubileestaging.tumblr.com/' || location.href == 'http://sfsilverjubileestaging.tumblr.com') {
+      window.location = "http://sfsilverjubileestaging.tumblr.com/info"
+     }
      if (location.href == 'http://subpopsilverjubilee.tumblr.com/' || location.href == 'http://subpopsilverjubilee.tumblr.com') {
       window.location = "http://subpopsilverjubilee.tumblr.com/info"
      }
@@ -762,7 +771,7 @@ http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
 		</div>
 		{/block:Posts}
 
-		<div id="footer">
+		<!--div id="footer">
 
 		  <div id="navigation">
 
@@ -770,17 +779,16 @@ http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
 		    {block:PreviousPage}<div id="navigation-right"><a href="{PreviousPage}">{lang:Newer}</a></div>{/block:PreviousPage}
 		    <div id="navigation-center">
 		      <form action="/search" method="get">
-            <input type="text" name="q" class="prefill" title="{lang:Search}"/>
-          </form>
+                <input type="text" name="q" class="prefill" title="{lang:Search}"/>
+              </form >
 		      <div id="search-background"></div>
 		    </div>
 		  </div>
 
 		  <div id="credit">
-		    <span>Designed by <a href="http://sleepoversf.tumblr.com/">Sleepover</a></span>
 		  </div>
 
-		</div>
+		</div -->
 
 	</div>
 
