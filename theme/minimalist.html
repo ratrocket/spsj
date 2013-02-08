@@ -8,6 +8,52 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+      <script type="text/javascript">
+        window.onload=pageSetup();
+
+        function pageSetup() {
+            if (isIndexPage()) {
+                redirectOnIndexPage();
+            }
+            else if (isNewsPage()) {
+
+            }
+        }
+
+        function isIndexPage() {
+            return redirectURL() != null;
+        }
+
+        function isNewsPage() {
+            var re = /tagged\/news/;
+            var currentPage = location.href;
+            return currentPage.split(re).length > 1;
+        }
+
+        function redirectOnIndexPage() {
+            redirectURL = redirectURL();
+            if (redirectURL != null) {
+                window.location = redirectURL;
+            }
+        }
+
+        function redirectURL() {
+            if (location.href == 'http://silverjubilee.subpop.com/' || location.href == 'http://silverjubilee.subpop.com') {
+                return "http://silverjubilee.subpop.com/info";
+            }
+            if (location.href == 'http://gksilverjubileestaging.tumblr.com/' || location.href == 'http://gksilverjubileestaging.tumblr.com') {
+                return "http://gksilverjubileestaging.tumblr.com/info";
+            }
+            if (location.href == 'http://sfsilverjubileestaging.tumblr.com/' || location.href == 'http://sfsilverjubileestaging.tumblr.com') {
+                return "http://sfsilverjubileestaging.tumblr.com/info";
+            }
+            if (location.href == 'http://subpopsilverjubilee.tumblr.com/' || location.href == 'http://subpopsilverjubilee.tumblr.com') {
+                return "http://subpopsilverjubilee.tumblr.com/info";
+            }
+            return null;
+        }
+     </script>
+
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
      <title>{Title}{block:PostSummary} | {PostSummary}{/block:PostSummary}{block:SearchPage} | {lang:Search results for SearchQuery}{/block:SearchPage}</title>
@@ -37,7 +83,6 @@
         font: 12px/20px Georgia, "Times New Roman", Times, serif;
         padding-top: 25px;
         text-align: center;
-        width:500px;
         margin: 0 auto;
      }
 
@@ -154,10 +199,8 @@
 /*----- MAIN HEADER NAV STRIP -----*/
 
      #mainNav {
-        border-top: 1px solid #222;
-        border-bottom: 2px solid #222;
-        margin-top: 20px;
-        padding: 13px 0 14px 0;
+        margin-top: 2px;
+        padding: 2px 0 2px 0;
         font-family: Cufon;
      }
 
@@ -243,10 +286,12 @@
 /*----- ARTICLE -----*/
 
      article {
-        background: #fff;
-        margin-bottom: 20px;
-        text-align: left;
-       position: relative;
+       background: #fff;
+       margin-bottom: 20px;
+       text-align: center;
+       margin-left: auto;
+       max-width: 709px;
+       margin-right: auto;
       }
 
      article img {
@@ -354,6 +399,7 @@
      .audioright {
         width: 444px;
         float: right;
+        text-align:right;
       }
 
      .audioContainer {
@@ -391,6 +437,8 @@
      .media {
         width: 500px;
         margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
      }
 
 /*----- PAGE NAVIGATION -----*/
@@ -452,6 +500,18 @@
         font-weight: bold;
      }
 
+     #crown {
+        float:left;
+        max-width:287px;
+     }
+
+     #postbody {
+         float:left;
+         max-width:300px;
+         padding-left: 72px;
+         padding-top: 50px;
+     }
+
 {CustomCSS}
 </style>
 
@@ -507,37 +567,27 @@
 </head>
 <body>
 
-     <header id="masthead" class="clearfix">
+     <header id="masthead">
         <div id="thehead">
-              <h1 class="cufon"><a href="/">{Title}</a></h1>
-              <form action="/search" method="get" id="frmSearch">
-              <input type="text" id="txtSearch" name="q" value="{SearchQuery}" />
-              </form>
-
-     {block:Description}
-        <div id="siteDescription">{Description}</div>
-     {block:Description}
+             <img src="http://assets1.subpop.com/assets/silverjubilee/silverjubilee_banner.jpg">
 
            <nav id="mainNav">
-              {block:HasPages}
-              {block:Pages}<li><a href="{URL}">{Label}</a></li>{block:Pages}
-              {/block:HasPages}
-              {block:AskEnabled}<li><a href="/ask">Ask</a></li>{/block:AskEnabled}
-              {block:SubmissionsEnabled}<li><a href="/submit">Submit</a></li>{/block:SubmissionsEnabled}
-              <li><a href="/archive">Archive</a></li>
-              <li><a href="/random">Random</a></li>
-              <li><a href="{RSS}">RSS</a></li>
-              <li><a href="javascript:;" id="btnSearch">Search</a></li>
-              {block:IfTwitterName}
-              <li><a href="http://twitter.com/{text:Twitter name}">Twitter</a></li>
-              {/block:IfTwitterName}
+               {block:HasPages}
+                  {block:Pages}
+                    <li><a href="{URL}">{Label}</a></li>
+                  {/block:Pages}
+               {/block:HasPages}
+
+               <li><a href="/tagged/news">Blog</a></li>
+               <!--li><a href="{RSS}">{lang:Subscribe}</a></li>
+               <li><a href="/archive">{lang:Archive}</a></li -->
+               <div id="clearfix"></div>
            </nav>
-        </div>
      </header>
 
-     <section id="main" class="clearfix">
+     <section id="main"
      <div class="layout">
-     {block:SearchPage}
+     <!-- >{block:SearchPage}
         <article>
            <div>
               <div class="searchPage">
@@ -555,31 +605,35 @@
                     {/block:NoSearchResults}
            </div>
         </article>
-     {/block:SearchPage}
+     {/block:SearchPage} -->
 
      {block:TagPage}
      <article>
         <div>
            <div class="searchPage">
-           <h2>Posts tagged <a href="{TagURL}">{Tag}</a></h2>
            </div>
         </div>
      </article>
      {/block:TagPage}
 
 {block:Posts}
-     <div id="designline">
+     <!-- div id="designline">
         <h5 class="postDate">
            <abbr>{block:Date}<a href="{Permalink}">{DayOfMOnth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}{block:NoteCount} | <a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}
            </abbr>
         </h5>
-     </div>
+     </div-->
 
      <article>
         <div>
            {block:Text}
-              {block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+            {block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+            <div id="crown">
+                <img src="http://assets1.subpop.com/assets/silverjubilee/silverjubilee_crown.jpg">
+            </div>
+            <div id="postbody">
               {Body}
+            </div>
            {/block:Text}
 
            {block:Photo}
