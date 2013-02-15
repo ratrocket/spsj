@@ -242,7 +242,7 @@
 
      article {
        background: #fff;
-       margin-bottom: 20px;
+       margin-top: 40px;
        text-align: center;
        margin-left: auto;
        max-width: 709px;
@@ -263,7 +263,7 @@
         overflow: hidden;
      }
      article .searchPage {
-        margin: 35px 0 0 0;
+        margin: 0 0 0 0;
      }
 
      .searchPageText {
@@ -577,12 +577,6 @@
      {/block:SearchPage} -->
 
      {block:TagPage}
-     <article>
-        <div>
-           <div class="searchPage">
-           </div>
-        </div>
-     </article>
      {/block:TagPage}
 
 {block:Posts}
@@ -745,7 +739,7 @@
      });
 
      function setupPage() {
-        if (isNewsPage()) {
+        if (isNewsPage() || isPostPage()) {
             $(".crown").hide();
             $(".text").removeClass("infoText").addClass("blogText");
         }
@@ -762,6 +756,12 @@
          var re = /tagged\/news/;
          var currentPage = location.href;
          return currentPage.match(re) != null;
+     }
+
+     function isPostPage() {
+       var re = /post/;
+       var currentPage = location.href;
+       return currentPage.match(re) != null;
      }
 
      function redirectOnIndexPage() {
