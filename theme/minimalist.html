@@ -739,7 +739,7 @@
      });
 
      function setupPage() {
-        if (isNewsPage() || isPostPage()) {
+        if (isNewsPage() || isPostPage() || isPartnersPage()) {
             $(".crown").hide();
             $(".text").removeClass("infoText").addClass("blogText");
         }
@@ -757,6 +757,13 @@
          var currentPage = location.href;
          return currentPage.match(re) != null;
      }
+
+     function isPartnersPage() {
+         var re = /partners/;
+         var currentPage = location.href;
+         return currentPage.match(re) != null;
+     }
+
 
      function isPostPage() {
        var re = /post/;
